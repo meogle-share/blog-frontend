@@ -20,7 +20,7 @@ type ExampleStore = ExampleState & ExampleActions
 
 export const useExampleStore = create<ExampleStore>()(
   devtools(
-    (set, get) => ({
+    (set) => ({
       // State
       count: 0,
       name: 'Zustand Example',
