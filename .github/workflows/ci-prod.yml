@@ -1,4 +1,4 @@
-name: ci-prod
+name: fe-ci-prod
 on:
   push:
     branches:
