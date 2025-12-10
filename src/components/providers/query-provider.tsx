@@ -16,9 +16,10 @@ export default function QueryProvider({ children }: QueryProviderProps) {
           queries: {
             staleTime: 1000 * 60 * 5, // 5분
             gcTime: 1000 * 60 * 10, // 10분
-            retry: (failureCount, error: any) => {
+            retry: (failureCount, error: unknown) => {
               // 4xx 에러는 재시도하지 않음
-              if (error?.response?.status >= 400 && error?.response?.status < 500) {
+              const axiosError = error as { response?: { status?: number } }
+              if (axiosError?.response?.status && axiosError.response.status >= 400 && axiosError.response.status < 500) {
                 return false
               }
               // 최대 3번 재시도
@@ -28,9 +29,10 @@ export default function QueryProvider({ children }: QueryProviderProps) {
             refetchOnReconnect: true,
           },
           mutations: {
-            retry: (failureCount, error: any) => {
+            retry: (failureCount, error: unknown) => {
               // 4xx 에러는 재시도하지 않음
-              if (error?.response?.status >= 400 && error?.response?.status < 500) {
+              const axiosError = error as { response?: { status?: number } }
+              if (axiosError?.response?.status && axiosError.response.status >= 400 && axiosError.response.status < 500) {
                 return false
               }
               // 최대 1번 재시도
@@ -46,7 +48,6 @@ export default function QueryProvider({ children }: QueryProviderProps) {
       {children}
       <ReactQueryDevtools 
         initialIsOpen={false}
-        position="bottom-right"
         buttonPosition="bottom-right"
       />
     </QueryClientProvider>
