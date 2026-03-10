@@ -3,7 +3,7 @@ export default async function PostDetailPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = await params;
+  const { id: _id } = await params;
   return (
     <div>
       <h1>포스트 상세</h1>

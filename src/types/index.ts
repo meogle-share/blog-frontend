@@ -9,18 +9,42 @@ export interface User {
   updatedAt: string
 }
 
+/** 블로그 프로필 (프로필 선택, 블로그 소유자) */
+export interface Profile {
+  id: number
+  username: string
+  name: string
+  description: string
+  avatar?: string
+  postCount: number
+  visitCount: number
+}
+
+/** 카테고리 */
+export interface Category {
+  id: string
+  name: string
+  slug: string
+  count: number
+}
+
 export interface Post {
   id: number
+  slug: string
   title: string
   content: string
   excerpt: string
+  category: string
   author: string
   authorId: number
+  authorUsername: string
   publishedAt: string
   tags: string[]
   status: 'draft' | 'published' | 'archived'
   views: number
   likes: number
+  commentCount: number
+  thumbnail?: string
   createdAt: string
   updatedAt: string
 }
@@ -30,11 +54,13 @@ export interface Comment {
   postId: number
   author: string
   authorId: number
+  authorAvatar?: string
   content: string
   parentId?: number
   likes: number
   createdAt: string
   updatedAt: string
+  replies?: Comment[]
 }
 
 // API 응답 타입

@@ -3,7 +3,7 @@ export default async function PostEditPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = await params;
+  const { id: _id } = await params;
   return (
     <div>
       <h1>포스트 수정</h1>

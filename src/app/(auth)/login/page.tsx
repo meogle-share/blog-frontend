@@ -1,7 +1,5 @@
+import { LoginCard } from "@/components/features/auth/login-card"
+
 export default function LoginPage() {
-  return (
-    <div>
-      <h1>로그인</h1>
-    </div>
-  );
+  return <LoginCard />
 }
