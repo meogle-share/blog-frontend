@@ -59,4 +59,4 @@ gh api repos/{owner}/{repo}/pulls/{number}/comments \
 ## 결과 보고
 
 subagent가 완료되면 리뷰 결과를 요약하여 사용자에게 보고한다.
-재리뷰의 경우 수용/반론 현황도 함께 보고한다.
+재리뷰의 경우 수용/반론 현황도 함께 보고한다..
