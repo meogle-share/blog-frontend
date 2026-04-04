@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/components/providers/query-provider";
+import { FloatingWriteButton } from "@/components/features/posts/floating-write-button";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-heading",
@@ -41,6 +42,7 @@ export default function RootLayout({
       >
         <QueryProvider>
           {children}
+          <FloatingWriteButton />
         </QueryProvider>
       </body>
     </html>
