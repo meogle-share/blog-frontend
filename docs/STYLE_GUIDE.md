@@ -183,25 +183,14 @@ shadow-card: 0 1px 3px rgba(0,0,0,0.08)
 - 텍스트: `#FFFFFF`, bold
 - border-radius: `radius-md`
 
-### 7.2 로그인 카드
+### 7.2 GitHub Login 버튼 (헤더)
 
-- 배경: `#FFFFFF`
-- shadow: `shadow-card`
-- border-radius: `radius-lg`
-- 패딩: `p-6` ~ `p-8`
-
-### 7.3 GitHub 버튼
-
-- 배경: `#1A1A1A`
-- 텍스트: `#FFFFFF`
-- 아이콘: GitHub Octocat (흰색)
-- border-radius: `radius-md`
-
-### 7.4 프로필 카드
-
-- 선택됨: `border-2 border-primary`
-- 미선택: `border border-border`
-- "프로필 추가": `border-2 border-dashed border-placeholder`
+- 배경: `#1A1A1A`, hover: `#2F2F2F`
+- 텍스트: `#FFFFFF`, `13px`, `font-medium`
+- 아이콘: GitHub 공식 SVG (currentColor)
+- border-radius: `radius-md` (8px)
+- 패딩: `px-3 py-1.5` (헤더 크기에 맞춤)
+- 로그인 후 "My Profile" 링크로 교체 (동일 스타일)
 
 ### 7.5 카테고리 칩 (다중 선택)
 
@@ -220,7 +209,8 @@ shadow-card: 0 1px 3px rgba(0,0,0,0.08)
 
 ### 7.8 헤더
 
-- 로고(Meo: purple, gle: black) | 프로필 | 검색바 | 네비게이션(홈, Frontend, Backend, AI, Infra+배지)
+- 로고(MEOGLE) | 네비게이션(Archive, My Desk) | GitHub Login 버튼 or 아바타 드롭다운
+- 인증: 비로그인 → GitHub Login 버튼 (OAuth 직접 호출), 로그인 → 아바타 클릭 시 드롭다운(My Profile, 로그아웃)
 
 ### 7.9 좋아요 버튼
 
@@ -306,7 +296,7 @@ shadow-card: 0 1px 3px rgba(0,0,0,0.08)
 | `header-height` | 헤더 높이 + Safe Area top |
 | `safe-bottom` | Safe Area bottom 패딩 |
 | `touch-target` | 터치 타겟 확장 |
-| `bg-auth` | 로그인/프로필 페이지 배경 그라데이션 |
+| `bg-auth` | (미사용) 배경 그라데이션 |
 
 ### 10.3 반응형 (웹/iOS/Android)
 

@@ -1,4 +1,4 @@
-export function ArchiveHero() {
+export function PeopleHero() {
   return (
     <section className="relative py-20 px-8 overflow-hidden">
       {/* Watermark text */}
@@ -7,7 +7,7 @@ export function ArchiveHero() {
           Voices
         </span>
         <span className="font-heading font-bold text-[120px] sm:text-[200px] leading-[0.85] tracking-[-8px] uppercase">
-          Archives
+          People
         </span>
       </div>
 

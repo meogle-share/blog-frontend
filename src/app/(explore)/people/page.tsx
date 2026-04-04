@@ -1,14 +1,14 @@
-import { ArchiveHero } from "@/components/features/explore/archive-hero";
+import { PeopleHero } from "@/components/features/explore/people-hero";
 import { AuthorCard } from "@/components/features/explore/author-card";
 import { FeaturedPreview } from "@/components/features/explore/featured-preview";
 import { mockAuthors, mockPosts } from "@/lib/mock-data";
 
-export default function ArchivePage() {
+export default function PeoplePage() {
   const featuredPost = mockPosts[3];
 
   return (
     <div className="min-h-screen">
-      <ArchiveHero />
+      <PeopleHero />
 
       {/* Authors Grid */}
       <section className="px-8 pb-16 max-w-[1280px] mx-auto">

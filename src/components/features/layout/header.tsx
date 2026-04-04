@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { Logo } from "./logo";
+import { HeaderAuth } from "@/components/features/auth/header-auth";
 import { cn } from "@/lib/utils";
 
 interface HeaderProps {
@@ -12,9 +13,8 @@ interface HeaderProps {
 }
 
 const navLinks = [
-  { href: "/julian", label: "Essays" },
-  { href: "/archive", label: "Archive" },
-  { href: "/manifesto", label: "Manifesto" },
+  { href: "/people", label: "We Our" },
+  { href: "/julian", label: "Desk" },
 ];
 
 export function Header({ variant = "default", children }: HeaderProps) {
@@ -62,6 +62,7 @@ export function Header({ variant = "default", children }: HeaderProps) {
         </div>
         <div className="flex items-center gap-4">
           {children}
+          <HeaderAuth />
           <button className="md:hidden p-2" aria-label="메뉴">
             <Menu className="size-5 text-foreground" />
           </button>

@@ -9,14 +9,12 @@
 | URL | 페이지 | 설명 |
 |-----|--------|------|
 | `/` | 랜딩/홈 | - |
-| `/login` | 로그인 | GitHub 소셜 로그인만 |
-| `/profiles` | 프로필 선택 | 로그인 후 진입 |
 | `/[username]` | 블로그 메인 | 소개글, 카테고리(다중선택), 게시글 그리드 |
 | `/[username]?category=a,b` | 카테고리 필터 | 쿼리: 여러 카테고리 OR 조건 |
 | `/[username]?tag=React` | 태그 필터 | 해당 태그 게시글만 |
 | `/[username]/liked` | 좋아요한 글 | **내 프로필일 때만** 표시/접근 |
 | `/[username]/posts/[slug]` | 아티클 상세 | MD 본문, 이미지, CRUD, 좋아요, 댓글/대댓글 |
-| `/archive` | 아카이브 | 작성자 탐색, 인기 에세이 |
+| `/people` | 피플 | 작성자 탐색, 인기 에세이 |
 | `/(dashboard)/*` | 대시보드 | 글 작성/수정, 프로필 관리 |
 
 ---
@@ -27,16 +25,9 @@
 meogle/
 ├── src/
 │   ├── app/
-│   │   ├── (auth)/                     # 인증 플로우
-│   │   │   ├── layout.tsx
-│   │   │   ├── login/
-│   │   │   │   └── page.tsx           # 로그인 (GitHub)
-│   │   │   └── profiles/
-│   │   │       └── page.tsx           # 프로필 선택
-│   │   │
 │   │   ├── (explore)/                  # 탐색/아카이브 (헤더+푸터, 사이드바 없음)
 │   │   │   ├── layout.tsx
-│   │   │   └── archive/
+│   │   │   └── people/
 │   │   │       └── page.tsx           # 작성자 탐색, 인기 에세이
 │   │   │
 │   │   ├── (blog)/                    # 공개 블로그 뷰 (헤더+사이드바)
@@ -78,13 +69,8 @@ meogle/
 │   │   │
 │   │   ├── features/
 │   │   │   ├── auth/
-│   │   │   │   ├── login-card.tsx     # 로그인 카드 (목업 1)
-│   │   │   │   ├── github-login-button.tsx
-│   │   │   │   └── auth-header.tsx    # GitHub 유저 + 로그아웃 (목업 2)
-│   │   │   │
-│   │   │   │   ├── profile-card.tsx   # 프로필 카드 (목업 2)
-│   │   │   │   ├── add-profile-card.tsx
-│   │   │   │   └── profile-grid.tsx
+│   │   │   │   ├── header-auth.tsx    # 헤더 인증 (GitHub Login 버튼 / My Profile 링크)
+│   │   │   │   └── github-icon.tsx    # GitHub 공식 SVG 아이콘
 │   │   │   │
 │   │   │   ├── layout/
 │   │   │   │   ├── header.tsx         # 로고, 프로필, 검색, 네비 (목업 3, 4)
@@ -183,27 +169,13 @@ meogle/
 
 ## 목업별 컴포넌트 매핑
 
-### 목업 1: 로그인
+### 헤더 인증
 
 | 요소 | 컴포넌트 |
 |------|----------|
-| 로고 + 슬로건 | `Logo`, 레이아웃 |
-| 로그인 카드 | `LoginCard` |
-| GitHub 버튼 | `GithubLoginButton` |
-| 이용약관 텍스트 | `LoginCard` 내부 |
-| 안내 문구 (Supabase) | `LoginCard` 하단 |
-| 도움말 아이콘 | `HelpIcon` (고정) |
-| 배경 그라데이션 | `(auth)/layout` 또는 페이지 |
-
-### 목업 2: 프로필 선택
-
-| 요소 | 컴포넌트 |
-|------|----------|
-| 헤더 (GitHub 유저, 로그아웃) | `AuthHeader` |
-| Meogle 타이틀 | `Logo` 또는 텍스트 |
-| 프로필 카드 | `ProfileCard` |
-| 프로필 추가 카드 | `AddProfileCard` |
-| 푸터 문구 | `Footer` 또는 레이아웃 |
+| GitHub Login 버튼 (비로그인) | `HeaderAuth` → GitHub OAuth 직접 호출 |
+| My Profile 링크 (로그인) | `HeaderAuth` → `/{username}` 이동 |
+| GitHub 아이콘 | `GitHubIcon` (공식 SVG) |
 
 ### 목업 3: 블로그 목록
 
@@ -232,12 +204,11 @@ meogle/
 
 | 폴더 | 설명 |
 |------|------|
-| `(auth)` | 로그인, 프로필 선택 (공개 전 레이아웃) |
 | `(explore)` | 탐색/아카이브 (헤더+푸터, 사이드바 없음) |
 | `(blog)` | 공개 블로그 (헤더+사이드바 공통) |
 | `(dashboard)` | 글 작성/수정, 프로필 관리 |
 | `components/ui` | shadcn, Avatar, Tag 등 기본 UI |
-| `components/features/auth` | 로그인, 프로필 선택 관련 |
+| `components/features/auth` | 헤더 인증 (GitHub Login / My Profile) |
 | `components/features/layout` | Header, Sidebar, Logo |
 | `components/features/blog` | 카테고리, 작성자 카드, 인기글 |
 | `components/features/posts` | PostCard, PostDetail, PostForm |
