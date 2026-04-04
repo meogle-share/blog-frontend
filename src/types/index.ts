@@ -2,9 +2,14 @@
 export interface User {
   id: number
   name: string
+  username: string
   email: string
   avatar?: string
+  bio?: string
+  location?: string
+  readerCount?: number
   role?: 'admin' | 'user'
+  label?: string
   createdAt: string
   updatedAt: string
 }
@@ -12,8 +17,11 @@ export interface User {
 export interface Post {
   id: number
   title: string
+  slug: string
   content: string
   excerpt: string
+  category: string
+  coverImage?: string
   author: string
   authorId: number
   publishedAt: string
@@ -21,6 +29,8 @@ export interface Post {
   status: 'draft' | 'published' | 'archived'
   views: number
   likes: number
+  readTime?: number
+  series?: string
   createdAt: string
   updatedAt: string
 }
@@ -35,6 +45,13 @@ export interface Comment {
   likes: number
   createdAt: string
   updatedAt: string
+}
+
+export interface Category {
+  id: string
+  name: string
+  slug: string
+  icon?: string
 }
 
 // API 응답 타입
@@ -71,6 +88,8 @@ export interface PostFormData {
   title: string
   content: string
   excerpt: string
+  category: string
+  coverImage?: string
   tags: string[]
   status: 'draft' | 'published'
 }
@@ -84,6 +103,7 @@ export interface CommentFormData {
 export interface PostFilters {
   status?: 'draft' | 'published' | 'archived'
   author?: string
+  category?: string
   tags?: string[]
   dateRange?: {
     start: string

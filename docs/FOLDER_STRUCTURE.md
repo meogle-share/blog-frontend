@@ -16,6 +16,7 @@
 | `/[username]?tag=React` | 태그 필터 | 해당 태그 게시글만 |
 | `/[username]/liked` | 좋아요한 글 | **내 프로필일 때만** 표시/접근 |
 | `/[username]/posts/[slug]` | 아티클 상세 | MD 본문, 이미지, CRUD, 좋아요, 댓글/대댓글 |
+| `/archive` | 아카이브 | 작성자 탐색, 인기 에세이 |
 | `/(dashboard)/*` | 대시보드 | 글 작성/수정, 프로필 관리 |
 
 ---
@@ -27,10 +28,16 @@ meogle/
 ├── src/
 │   ├── app/
 │   │   ├── (auth)/                     # 인증 플로우
+│   │   │   ├── layout.tsx
 │   │   │   ├── login/
 │   │   │   │   └── page.tsx           # 로그인 (GitHub)
 │   │   │   └── profiles/
 │   │   │       └── page.tsx           # 프로필 선택
+│   │   │
+│   │   ├── (explore)/                  # 탐색/아카이브 (헤더+푸터, 사이드바 없음)
+│   │   │   ├── layout.tsx
+│   │   │   └── archive/
+│   │   │       └── page.tsx           # 작성자 탐색, 인기 에세이
 │   │   │
 │   │   ├── (blog)/                    # 공개 블로그 뷰 (헤더+사이드바)
 │   │   │   ├── layout.tsx             # 블로그 레이아웃 (Header, Sidebar)
@@ -226,6 +233,7 @@ meogle/
 | 폴더 | 설명 |
 |------|------|
 | `(auth)` | 로그인, 프로필 선택 (공개 전 레이아웃) |
+| `(explore)` | 탐색/아카이브 (헤더+푸터, 사이드바 없음) |
 | `(blog)` | 공개 블로그 (헤더+사이드바 공통) |
 | `(dashboard)` | 글 작성/수정, 프로필 관리 |
 | `components/ui` | shadcn, Avatar, Tag 등 기본 UI |

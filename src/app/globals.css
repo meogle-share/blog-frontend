@@ -6,36 +6,13 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
+  --font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  --font-heading: var(--font-heading);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
-  --color-success: var(--success);
-  --color-success-foreground: var(--success-foreground);
-  --color-warning: var(--warning);
-  --color-warning-foreground: var(--warning-foreground);
-  --color-info: var(--info);
-  --color-info-foreground: var(--info-foreground);
-  --color-brand-blue: var(--brand-blue);
-  --color-brand-purple: var(--brand-purple);
-  --color-link: var(--link);
-  --color-tag-category-bg: var(--tag-category-bg);
-  --color-tag-category-text: var(--tag-category-text);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -48,113 +25,52 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-cream-dark: var(--cream-dark);
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 :root {
-  /* 레이아웃 (웹/iOS/Android 반응형) */
+  /* 레이아웃 */
   --header-height: 64px;
-  --sidebar-width: 320px;
+  --sidebar-width: 256px;
   --container-max: 1280px;
-  --content-max: 720px;
+  --content-max: 640px;
   --touch-target-min: 44px;
   --safe-area-top: env(safe-area-inset-top, 0px);
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
   --safe-area-left: env(safe-area-inset-left, 0px);
   --safe-area-right: env(safe-area-inset-right, 0px);
 
-  --radius: 0.5rem;
-  --background: oklch(0.975 0.002 247);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.55 0.25 280);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.94 0 0);
-  --muted-foreground: oklch(0.45 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --success: oklch(0.55 0.18 145);
-  --success-foreground: oklch(0.985 0 0);
-  --warning: oklch(0.75 0.15 85);
-  --warning-foreground: oklch(0.205 0 0);
-  --info: oklch(0.55 0.2 250);
-  --info-foreground: oklch(0.985 0 0);
-  --brand-blue: oklch(0.6 0.2 264);
-  --brand-purple: oklch(0.65 0.2 295);
-  --link: oklch(0.6 0.2 264);
-  --tag-category-bg: oklch(0.95 0.03 195);
-  --tag-category-text: oklch(0.65 0.15 195);
-  --border: oklch(0.9 0 0);
-  --input: oklch(0.93 0 0);
-  --ring: oklch(0.55 0.25 280);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
+  /* CURATOR 에디토리얼 팔레트 */
+  --background: #fafaf5;
+  --foreground: #1a1c19;
+  --card: #ffffff;
+  --card-foreground: #1a1c19;
+  --popover: #ffffff;
+  --popover-foreground: #1a1c19;
+  --primary: #1a1c19;
+  --primary-foreground: #e4e2e1;
+  --secondary: #f4f4ef;
+  --secondary-foreground: #1a1c19;
+  --muted: #f4f4ef;
+  --muted-foreground: #5e5e5e;
+  --accent: #e8e8e3;
+  --accent-foreground: #1a1c19;
+  --destructive: #dc2626;
+  --border: #e3e3de;
+  --input: #f4f4ef;
+  --ring: #1a1c19;
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --success: oklch(0.6 0.18 145);
-  --success-foreground: oklch(0.985 0 0);
-  --warning: oklch(0.7 0.15 85);
-  --warning-foreground: oklch(0.145 0 0);
-  --info: oklch(0.6 0.2 250);
-  --info-foreground: oklch(0.985 0 0);
-  --brand-blue: oklch(0.65 0.2 264);
-  --brand-purple: oklch(0.7 0.2 295);
-  --link: oklch(0.65 0.2 264);
-  --tag-category-bg: oklch(0.3 0.05 195);
-  --tag-category-text: oklch(0.75 0.1 195);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* 텍스트 보조 색상 */
+  --text-secondary: #3c3b3b;
+  --text-tertiary: #777777;
+  --cream-dark: #e3e3de;
 }
 
 @layer base {
@@ -165,7 +81,7 @@
   }
 
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
 
   html {
@@ -176,6 +92,7 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
     min-height: 100dvh;
     min-height: 100vh;
     overflow-x: hidden;
@@ -183,7 +100,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* iOS input zoom 방지 (16px 미만 시 자동 확대) */
+  /* iOS input zoom 방지 */
   input,
   select,
   textarea,
@@ -200,7 +117,6 @@
     }
   }
 
-  /* 이미지 반응형 */
   img,
   picture,
   video,
@@ -211,30 +127,25 @@
     height: auto;
   }
 
-  /* 터치 타겟 최소 크기 (버튼) - .touch-target 유틸로 확장 가능 */
+  /* 터치 타겟 최소 크기 */
   button,
   [role="button"] {
     min-height: var(--touch-target-min);
     min-width: var(--touch-target-min);
   }
 
-  /* 포커스 접근성 */
   :focus-visible {
-    outline: 2px solid oklch(0.55 0.25 280);
+    outline: 2px solid var(--foreground);
     outline-offset: 2px;
   }
 
-  /* 선택 영역 */
   ::selection {
-    background-color: oklch(0.6 0.2 264 / 0.2);
+    background-color: rgba(26, 28, 25, 0.1);
   }
 }
 
-/* ============================================
-   전역 레이아웃 유틸리티
-   ============================================ */
 @layer components {
-  /* 컨테이너: 중앙 정렬, max-width, 패딩 */
+  /* 컨테이너 */
   .container-global {
     width: 100%;
     max-width: var(--container-max);
@@ -255,41 +166,48 @@
     }
   }
 
-  /* 메인 콘텐츠 영역 (블로그 본문 등) */
+  /* 메인 콘텐츠 영역 */
   .content-main {
     max-width: var(--content-max);
     width: 100%;
   }
 
-  /* 카드 스타일 (Figma: 흰 배경, 둥근 모서리, 그림자) */
+  /* 카드 스타일 */
   .card-base {
     background-color: var(--card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-card);
   }
 
-  /* 블로그 레이아웃: 메인 + 사이드바 (lg 이상) */
-  .layout-blog {
-    display: flex;
-    flex-direction: column;
+  /* 12열 그리드 */
+  .grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
     gap: 24px;
   }
 
   @media (min-width: 1024px) {
-    .layout-blog {
-      flex-direction: row;
-      align-items: flex-start;
+    .grid-12 {
+      gap: 48px;
     }
+  }
 
-    .layout-blog-main {
-      flex: 1;
-      min-width: 0;
-    }
+  /* 에디토리얼 이미지 (그레이스케일) */
+  .img-editorial {
+    position: relative;
+  }
 
-    .layout-blog-sidebar {
-      width: var(--sidebar-width);
-      flex-shrink: 0;
-    }
+  .img-editorial img {
+    filter: grayscale(100%);
+  }
+
+  .img-editorial::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: white;
+    mix-blend-mode: saturation;
+    pointer-events: none;
   }
 
   /* 헤더 고정 높이 */
@@ -298,12 +216,12 @@
     padding-top: var(--safe-area-top);
   }
 
-  /* Safe area 하단 (iOS 홈 인디케이터) */
+  /* Safe area 하단 */
   .safe-bottom {
     padding-bottom: var(--safe-area-bottom);
   }
 
-  /* 터치 타겟 확장 (네비 링크, 카드 등) */
+  /* 터치 타겟 확장 */
   .touch-target {
     min-height: var(--touch-target-min);
     min-width: var(--touch-target-min);
@@ -312,13 +230,8 @@
     justify-content: center;
   }
 
-  /* 로그인/프로필 선택 페이지 배경 (Figma) */
-  .bg-auth {
-    background: linear-gradient(
-      135deg,
-      oklch(0.98 0.02 270) 0%,
-      oklch(0.99 0.01 247) 50%,
-      oklch(1 0 0) 100%
-    );
+  /* 폰트 헤딩 (Space Grotesk) */
+  .font-heading {
+    font-family: var(--font-heading), "Space Grotesk", sans-serif;
   }
 }

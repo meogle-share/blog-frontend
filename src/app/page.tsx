@@ -1,10 +1,17 @@
+import { Header } from "@/components/features/layout/header";
+import { Footer } from "@/components/features/layout/footer";
+import { ExploreHero } from "@/components/features/explore/explore-hero";
+import { MagazineGrid } from "@/components/features/explore/magazine-grid";
+
 export default function Home() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Blog Frontend</h1>
-        <p className="text-muted-foreground">TanStack Query가 설정되었습니다!</p>
-      </div>
+    <div className="min-h-screen flex flex-col bg-background">
+      <Header />
+      <main className="flex-1 pt-[var(--header-height)]">
+        <ExploreHero />
+        <MagazineGrid />
+      </main>
+      <Footer />
     </div>
-  )
+  );
 }

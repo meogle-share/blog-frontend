@@ -8,6 +8,7 @@
 |------|------|
 | `(auth)` | 로그인, 프로필 선택 |
 | `(blog)` | 공개 블로그 (헤더+사이드바 레이아웃) |
+| `(explore)` | 탐색/아카이브 (헤더+푸터, 사이드바 없음) |
 | `(dashboard)` | 글 작성/수정, 프로필 관리 |
 
 ## 컴포넌트 배치
@@ -15,7 +16,7 @@
 | 디렉토리 | 내용 |
 |----------|------|
 | `components/ui/` | shadcn/ui 기본 UI (Button, Card 등) |
-| `components/features/{도메인}/` | 도메인별 컴포넌트 (auth, posts, blog, comments, layout, search) |
+| `components/features/{도메인}/` | 도메인별 컴포넌트 (auth, posts, blog, explore, comments, layout, search) |
 | `components/providers/` | React Context/Provider |
 | `hooks/api/` | TanStack Query 기반 API 훅 (`use-posts.ts` 등) |
 | `hooks/ui/` | UI 유틸 훅 (`use-modal.ts`, `use-debounce.ts` 등) |
