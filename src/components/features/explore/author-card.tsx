@@ -10,9 +10,9 @@ export function AuthorCard({ author }: AuthorCardProps) {
   return (
     <Link
       href={`/${author.username}`}
-      className="group flex items-center gap-4 p-4 hover:bg-muted/50 transition-colors rounded-[2px]"
+      className="group flex items-center gap-5 p-5 hover:bg-muted/50 transition-colors rounded-[2px]"
     >
-      <div className="size-[48px] rounded-[2px] overflow-hidden relative shrink-0">
+      <div className="size-[100px] rounded-[2px] overflow-hidden relative shrink-0">
         {author.avatar ? (
           <>
             <Image
@@ -28,10 +28,10 @@ export function AuthorCard({ author }: AuthorCardProps) {
         )}
       </div>
       <div className="min-w-0">
-        <p className="font-heading font-bold text-[12px] tracking-[0.3px] uppercase text-foreground truncate">
+        <p className="font-heading font-bold text-[16px] tracking-[0.3px] uppercase text-foreground truncate">
           {author.name}
         </p>
-        <p className="text-[10px] text-text-tertiary tracking-[0.5px] uppercase truncate">
+        <p className="text-[13px] text-text-tertiary tracking-[0.5px] uppercase truncate">
           {author.label}
         </p>
       </div>
