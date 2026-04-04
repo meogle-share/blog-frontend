@@ -47,7 +47,7 @@
   --safe-area-left: env(safe-area-inset-left, 0px);
   --safe-area-right: env(safe-area-inset-right, 0px);
 
-  /* CURATOR 에디토리얼 팔레트 */
+  /* MEOGLE 에디토리얼 팔레트 */
   --background: #fafaf5;
   --foreground: #1a1c19;
   --card: #ffffff;

@@ -10,7 +10,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "CURATOR",
+  title: "MEOGLE",
   description: "큐레이션된 에세이와 아카이브",
 };
 

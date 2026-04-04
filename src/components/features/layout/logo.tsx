@@ -12,7 +12,7 @@ export function Logo({ size = "default" }: LogoProps) {
 
   return (
     <Link href="/" className="font-heading font-bold leading-[28px]">
-      <span className={`${textClass} text-foreground uppercase`}>CURATOR</span>
+      <span className={`${textClass} text-foreground uppercase`}>MEOGLE</span>
     </Link>
   );
 }

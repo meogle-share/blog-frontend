@@ -15,7 +15,7 @@ export function Footer() {
         <div className="flex flex-col gap-2">
           <Logo size="sm" />
           <p className="text-[12px] text-text-secondary tracking-[0.3px]">
-            &copy; 2024 CURATOR EDITORIAL
+            &copy; 2024 MEOGLE EDITORIAL
           </p>
         </div>
         <nav className="hidden sm:flex items-center gap-8">
