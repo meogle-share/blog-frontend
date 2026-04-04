@@ -1,7 +1,7 @@
 import { Header } from "@/components/features/layout/header";
 import { Footer } from "@/components/features/layout/footer";
 
-export default function BlogLayout({
+export default function ExploreLayout({
   children,
 }: {
   children: React.ReactNode;
