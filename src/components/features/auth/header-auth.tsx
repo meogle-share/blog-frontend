@@ -30,7 +30,7 @@ type Toast = { message: string; visible: boolean } | null;
 export function HeaderAuth() {
   const { user, isLoading, justLoggedIn, logout } = useAuth();
   const [toast, setToast] = useState<Toast>(null);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const showToast = (message: string) => {
     clearTimeout(timerRef.current);
