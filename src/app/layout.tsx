@@ -1,18 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/components/providers/query-provider";
 import { FloatingWriteButton } from "@/components/features/posts/floating-write-button";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-heading",
+const pressStart2P = Press_Start_2P({
+  variable: "--font-pixel",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: "400",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "MEOGLE",
-  description: "큐레이션된 에세이와 아카이브",
+  description: "디지털 에세이 퀘스트 — 기술·예술·철학의 교차점",
 };
 
 export const viewport: Viewport = {
@@ -37,9 +38,7 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
         />
       </head>
-      <body
-        className={`${spaceGrotesk.variable} antialiased`}
-      >
+      <body className={`${pressStart2P.variable} antialiased`}>
         <QueryProvider>
           {children}
           <FloatingWriteButton />

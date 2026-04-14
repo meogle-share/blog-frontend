@@ -6,9 +6,11 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-  --font-heading: var(--font-heading);
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: "Press Start 2P", "Pretendard Variable", "Pretendard", monospace;
+  --font-heading: "Press Start 2P", monospace;
+  --font-mono: "Press Start 2P", ui-monospace, monospace;
+  --font-pixel: "Press Start 2P", monospace;
+  --font-content: "Pretendard Variable", "Pretendard", sans-serif;
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -27,50 +29,88 @@
   --color-card: var(--card);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
-  --color-cream-dark: var(--cream-dark);
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 6px;
-  --radius-xl: 8px;
-  --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.06);
+
+  /* 8-bit: NO border radius — 픽셀 퍼펙트 */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+
+  --shadow-card: 3px 3px 0px var(--border);
 }
 
 :root {
   /* 레이아웃 */
   --header-height: 64px;
-  --sidebar-width: 256px;
+  --sidebar-width: 240px;
   --container-max: 1280px;
-  --content-max: 640px;
+  --content-max: 760px;
   --touch-target-min: 44px;
   --safe-area-top: env(safe-area-inset-top, 0px);
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
   --safe-area-left: env(safe-area-inset-left, 0px);
   --safe-area-right: env(safe-area-inset-right, 0px);
 
-  /* MEOGLE 에디토리얼 팔레트 */
-  --background: #fafaf5;
-  --foreground: #1a1c19;
-  --card: #ffffff;
-  --card-foreground: #1a1c19;
-  --popover: #ffffff;
-  --popover-foreground: #1a1c19;
-  --primary: #1a1c19;
-  --primary-foreground: #e4e2e1;
-  --secondary: #f4f4ef;
-  --secondary-foreground: #1a1c19;
-  --muted: #f4f4ef;
-  --muted-foreground: #5e5e5e;
-  --accent: #e8e8e3;
-  --accent-foreground: #1a1c19;
-  --destructive: #dc2626;
-  --border: #e3e3de;
-  --input: #f4f4ef;
-  --ring: #1a1c19;
+  /* ═══════════════════════════════════════
+     JRPG PARCHMENT PALETTE
+     양피지 + 잉크 + 숲의 녹색
+     ═══════════════════════════════════════ */
+  --background: #f2eacc;       /* 양피지 크림 */
+  --foreground: #2a1a00;       /* 짙은 갈색 잉크 */
+  --card: #ede5c8;             /* 카드 크림 */
+  --card-foreground: #2a1a00;
+  --popover: #ede5c8;
+  --popover-foreground: #2a1a00;
+  --primary: #2d5a14;          /* 숲의 녹색 — 헤더, CTA */
+  --primary-foreground: #f2eacc;
+  --secondary: #d8d0b4;        /* 연한 양피지 */
+  --secondary-foreground: #2a1a00;
+  --muted: #d8d0b4;
+  --muted-foreground: #6a5a3a;
+  --accent: #c4a020;           /* 게임 골드 */
+  --accent-foreground: #2a1a00;
+  --destructive: #b02010;      /* 위험 빨강 */
+  --border: #2a1a00;           /* 잉크 테두리 */
+  --input: #ede5c8;
+  --ring: #2d5a14;
 
-  /* 텍스트 보조 색상 */
-  --text-secondary: #3c3b3b;
-  --text-tertiary: #777777;
-  --cream-dark: #e3e3de;
+  /* JRPG 상태 색상 */
+  --status-pending: #c4a020;   /* 대기 — 골드 */
+  --status-active: #1a4080;    /* 진행 — 딥 블루 */
+  --status-complete: #206020;  /* 완료 — 녹색 */
+  --status-failed: #b02010;    /* 실패 — 빨강 */
+  --status-urgent: #c03020;    /* 긴급 — 밝은 빨강 */
+  --status-high: #c47020;      /* 높음 — 오렌지 */
+
+  --text-secondary: #4a3520;
+  --text-tertiary: #6a5a3a;
+  --cream-dark: #d8d0b4;
+}
+
+/* ════════════════════════════════════════
+   8-BIT ANIMATIONS
+   ════════════════════════════════════════ */
+
+@keyframes pixel-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes pixel-float {
+  0%, 100% { transform: translateY(0px); }
+  25% { transform: translateY(-3px); }
+  50% { transform: translateY(-6px); }
+  75% { transform: translateY(-3px); }
+}
+
+@keyframes quest-appear {
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 @layer base {
@@ -82,70 +122,241 @@
 
   * {
     @apply border-border;
+    transition: none;
   }
 
   html {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    @apply text-foreground;
+    font-family: "Press Start 2P", "Pretendard Variable", "Pretendard", monospace;
     min-height: 100dvh;
     min-height: 100vh;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: unset;
+
+    /* 양피지 배경 + 방안지 격자 */
+    background-color: var(--background);
+    background-image:
+      linear-gradient(rgba(42, 26, 0, 0.065) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42, 26, 0, 0.065) 1px, transparent 1px);
+    background-size: 20px 20px;
   }
 
-  /* iOS input zoom 방지 */
-  input,
-  select,
-  textarea,
-  button {
+  input, select, textarea, button {
     font-size: 16px;
+    font-family: inherit;
   }
 
   @media (min-width: 768px) {
-    input,
-    select,
-    textarea,
-    button {
+    input, select, textarea, button {
       font-size: inherit;
     }
   }
 
-  img,
-  picture,
-  video,
-  canvas,
-  svg {
+  img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;
     height: auto;
   }
 
-  /* 터치 타겟 최소 크기 */
-  button,
-  [role="button"] {
+  button, [role="button"] {
     min-height: var(--touch-target-min);
     min-width: var(--touch-target-min);
   }
 
   :focus-visible {
-    outline: 2px solid var(--foreground);
-    outline-offset: 2px;
+    outline: 3px solid var(--foreground);
+    outline-offset: 0px;
   }
 
   ::selection {
-    background-color: rgba(26, 28, 25, 0.1);
+    background-color: var(--accent);
+    color: var(--foreground);
   }
+
+  /* 커스텀 스크롤바 */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--muted); border-left: 2px solid var(--border); }
+  ::-webkit-scrollbar-thumb { background: var(--primary); border: 0; }
+  ::-webkit-scrollbar-thumb:hover { background: #3a7020; }
 }
 
+/* ════════════════════════════════════════
+   JRPG 픽셀 유틸리티 클래스
+   ════════════════════════════════════════ */
+
 @layer components {
-  /* 컨테이너 */
+  /* 폰트 */
+  .font-pixel {
+    font-family: "Press Start 2P", monospace;
+    -webkit-font-smoothing: none;
+  }
+
+  .font-content {
+    font-family: "Pretendard Variable", "Pretendard", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── 픽셀 박스 (RPG 다이얼로그) ────── */
+  .pixel-box {
+    background: var(--card);
+    border: 3px solid var(--border);
+    box-shadow: 3px 3px 0 var(--border);
+  }
+
+  .pixel-box:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--border);
+  }
+
+  .pixel-box-flat {
+    background: var(--card);
+    border: 3px solid var(--border);
+    box-shadow: 3px 3px 0 var(--border);
+  }
+
+  .pixel-border {
+    border: 2px solid var(--border);
+  }
+
+  /* ── 퀘스트 카드 (클릭 가능) ─────── */
+  .quest-card {
+    background: var(--card);
+    border: 3px solid var(--border);
+    box-shadow: 3px 3px 0 var(--border);
+    cursor: pointer;
+  }
+
+  .quest-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--border);
+  }
+
+  /* ── 버튼 ─────────────────────────── */
+  .pixel-btn {
+    font-family: "Press Start 2P", monospace;
+    border: 2px solid var(--border);
+    box-shadow: 3px 3px 0 var(--border);
+    background: var(--card);
+    color: var(--foreground);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .pixel-btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--border);
+    background: var(--muted);
+  }
+
+  .pixel-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--border);
+  }
+
+  .pixel-btn-primary {
+    font-family: "Press Start 2P", monospace;
+    border: 2px solid var(--border);
+    box-shadow: 3px 3px 0 var(--border);
+    background: var(--primary);
+    color: var(--primary-foreground);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .pixel-btn-primary:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--border);
+    background: #3a7020;
+  }
+
+  .pixel-btn-primary:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--border);
+  }
+
+  /* ── 뱃지 (상태 표시) ─────────────── */
+  .badge {
+    font-family: "Press Start 2P", monospace;
+    font-size: 8px;
+    padding: 4px 8px;
+    border: 2px solid var(--border);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    line-height: 1.4;
+  }
+
+  .badge-pending {
+    background: var(--status-pending);
+    color: var(--foreground);
+  }
+
+  .badge-active {
+    background: var(--status-active);
+    color: #f0e8cc;
+  }
+
+  .badge-complete {
+    background: var(--status-complete);
+    color: #f0e8cc;
+  }
+
+  .badge-failed {
+    background: var(--status-failed);
+    color: #f0e8cc;
+  }
+
+  .badge-urgent {
+    background: var(--status-urgent);
+    color: #f0e8cc;
+  }
+
+  .badge-high {
+    background: var(--status-high);
+    color: var(--foreground);
+  }
+
+  /* ── 하트 (HP) ────────────────────── */
+  .heart-filled { color: #c03020; }
+  .heart-empty { color: var(--border); opacity: 0.25; }
+
+  /* ── 애니메이션 ────────────────────── */
+  .animate-blink {
+    animation: pixel-blink 1s steps(1) infinite;
+  }
+
+  .animate-pixel-float {
+    animation: pixel-float 2s steps(4) infinite;
+  }
+
+  /* ── 구분선 ────────────────────────── */
+  .pixel-divider {
+    border: none;
+    border-top: 2px dashed var(--border);
+    opacity: 0.35;
+  }
+
+  .pixel-divider-solid {
+    border: none;
+    height: 2px;
+    background: var(--border);
+  }
+
+  /* ── 레이아웃 ──────────────────────── */
   .container-global {
     width: 100%;
     max-width: var(--container-max);
@@ -155,83 +366,37 @@
   }
 
   @media (min-width: 640px) {
-    .container-global {
-      padding-inline: 24px;
-    }
+    .container-global { padding-inline: 24px; }
   }
 
   @media (min-width: 1024px) {
-    .container-global {
-      padding-inline: 32px;
-    }
+    .container-global { padding-inline: 32px; }
   }
 
-  /* 메인 콘텐츠 영역 */
-  .content-main {
-    max-width: var(--content-max);
-    width: 100%;
-  }
-
-  /* 카드 스타일 */
-  .card-base {
-    background-color: var(--card);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-card);
-  }
-
-  /* 12열 그리드 */
-  .grid-12 {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
-  }
-
-  @media (min-width: 1024px) {
-    .grid-12 {
-      gap: 48px;
-    }
-  }
-
-  /* 에디토리얼 이미지 (그레이스케일) */
-  .img-editorial {
-    position: relative;
-  }
-
-  .img-editorial img {
-    filter: grayscale(100%);
-  }
-
-  .img-editorial::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: white;
-    mix-blend-mode: saturation;
-    pointer-events: none;
-  }
-
-  /* 헤더 고정 높이 */
   .header-height {
     height: var(--header-height);
     padding-top: var(--safe-area-top);
   }
 
-  /* Safe area 하단 */
   .safe-bottom {
     padding-bottom: var(--safe-area-bottom);
   }
 
-  /* 터치 타겟 확장 */
-  .touch-target {
-    min-height: var(--touch-target-min);
-    min-width: var(--touch-target-min);
-    display: inline-flex;
+  /* ── 체크박스 (퀘스트 스타일) ──────── */
+  .quest-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    background: var(--card);
+    flex-shrink: 0;
+    display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
 
-  /* 폰트 헤딩 (Space Grotesk) */
-  .font-heading {
-    font-family: var(--font-heading), "Space Grotesk", sans-serif;
+  /* ── 이미지 JRPG 처리 ───────────────  */
+  .img-jrpg {
+    filter: sepia(30%) contrast(1.1) brightness(0.9) saturate(0.6);
   }
 }
